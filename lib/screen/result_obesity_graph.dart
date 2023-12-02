@@ -396,6 +396,7 @@ class _ResultObesityGraphState extends State<ResultObesityGraph> {
                             onPrimary: DEFAULT_BLUE,
                             elevation: 0,
                             minimumSize: Size(54, 54),
+                            padding: EdgeInsets.all(0),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                                 side: BorderSide(color: DEFAULT_BLUE)),

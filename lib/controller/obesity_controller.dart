@@ -1,9 +1,13 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide FormData, MultipartFile;
 import 'package:image_picker/image_picker.dart';
 
 import '../constant/enums.dart';
+import 'obesity_data_controller.dart';
+
 
 class ObesityController extends GetxController {
   Map<DogType, String> DogText = {
@@ -15,7 +19,7 @@ class ObesityController extends GetxController {
   DogType? dogType;
   int age = -1;
   List<XFile?> obesityPics = [null, null, null, null];
-  Map<String, dynamic>? data;
+  PetObesityData? data;
 
 
   void updateDogType(DogType selectDogType) {
@@ -45,7 +49,7 @@ class ObesityController extends GetxController {
     }
   }
 
-  Future uploadObesity() async {
+  Future<PetObesityData?> uploadObesity() async {
     if (obesityPics.every((item) => item != null)) {
       // 이미지를 Dio를 사용하여 서버로 업로드
       final dio = Dio();
@@ -59,11 +63,18 @@ class ObesityController extends GetxController {
               'image': await MultipartFile.fromFile(obesityPics[2]!.path),
               'image': await MultipartFile.fromFile(obesityPics[3]!.path),
             }));
-        print(response.data);
-        data = response.data;
+        print("응답완료: ${response.data}");
+        var jsonData = await response.data;
+        data = PetObesityData.fromJson(jsonData);
+        return data;
       } catch (e) {
         print("에러!!!: ${e}");
       }
     }
+    else{
+      return null;
+    }
   }
+
+
 }

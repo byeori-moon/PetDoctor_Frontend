@@ -65,13 +65,7 @@ class ObesityTakePictureScreen extends StatelessWidget {
                   ),
                   onPressed: obesityController.allPicsAreNotNull()
                       ? () {
-                          obesityController.data = {
-                            "result": [0.47, "over weight"],
-                          };
                           Get.to(ObesityResultScreen());
-                          /*obesityController.uploadObesity().then((_) {
-                            Get.to(ObesityResultScreen());
-                          });*/
                         }
                       : null,
                   child: SizedBox(

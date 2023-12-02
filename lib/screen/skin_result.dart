@@ -121,7 +121,20 @@ class _SkinResultState extends State<SkinResult> {
                     ),
                   ),
                   onPressed: () {
-                    Get.to(CameraScreen());
+                    showDialog(context: context, builder: (BuildContext context){
+                      return AlertDialog(
+                        title: Text('AI 로그'),
+                        content: Text('${skinController.data}'),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop(); // 팝업창 닫기
+                            },
+                            child: Text('닫기'),
+                          ),
+                        ],
+                      );
+                    },);
                   },
                   child: SizedBox(
                     height: 42,
@@ -137,7 +150,7 @@ class _SkinResultState extends State<SkinResult> {
                           width: 4.0,
                         ),
                         Text(
-                          '다시 촬영하기',
+                          '로그 확인하기',
                           style: TextStyle(
                             fontFamily: 'BMJUA',
                             fontSize: 18,

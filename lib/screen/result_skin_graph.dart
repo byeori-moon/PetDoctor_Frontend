@@ -65,7 +65,7 @@ class _ResultSkinGraphState extends State<ResultSkinGraph> {
                             ),
                             Padding(
                               padding:
-                              const EdgeInsets.symmetric(horizontal: 4.0),
+                                  const EdgeInsets.symmetric(horizontal: 4.0),
                               child: Text(
                                 '뽀삐의 피부 진단기록',
                                 style: TextStyle(
@@ -115,16 +115,16 @@ class _ResultSkinGraphState extends State<ResultSkinGraph> {
                             ),
                             onPressed: () async {
                               final selectedDateRange =
-                              await showDateRangePicker(
-                                  context: context,
-                                  firstDate: DateTime(2022),
-                                  lastDate: DateTime.now(),
-                                  initialEntryMode:
-                                  DatePickerEntryMode.calendarOnly,
-                                  initialDateRange: DateTimeRange(
-                                    start: startDate,
-                                    end: finalDate,
-                                  ));
+                                  await showDateRangePicker(
+                                      context: context,
+                                      firstDate: DateTime(2022),
+                                      lastDate: DateTime.now(),
+                                      initialEntryMode:
+                                          DatePickerEntryMode.calendarOnly,
+                                      initialDateRange: DateTimeRange(
+                                        start: startDate,
+                                        end: finalDate,
+                                      ));
                               if (selectedDateRange != null) {
                                 setState(() {
                                   startDate = selectedDateRange.start;
@@ -171,16 +171,16 @@ class _ResultSkinGraphState extends State<ResultSkinGraph> {
                             ),
                             onPressed: () async {
                               final selectedDateRange =
-                              await showDateRangePicker(
-                                  context: context,
-                                  firstDate: DateTime(2022),
-                                  lastDate: DateTime.now(),
-                                  initialEntryMode:
-                                  DatePickerEntryMode.calendarOnly,
-                                  initialDateRange: DateTimeRange(
-                                    start: startDate,
-                                    end: finalDate,
-                                  ));
+                                  await showDateRangePicker(
+                                      context: context,
+                                      firstDate: DateTime(2022),
+                                      lastDate: DateTime.now(),
+                                      initialEntryMode:
+                                          DatePickerEntryMode.calendarOnly,
+                                      initialDateRange: DateTimeRange(
+                                        start: startDate,
+                                        end: finalDate,
+                                      ));
                               if (selectedDateRange != null) {
                                 setState(() {
                                   startDate = selectedDateRange.start;
@@ -214,17 +214,47 @@ class _ResultSkinGraphState extends State<ResultSkinGraph> {
                   ),
                   Container(
                     height: 380,
-                    child: Expanded(
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Container(
-                          width: (400 +
-                              skinDataController.data!.length * 50)
-                              .toDouble(),
-                          height: 380,
-                          child: Padding(
-                            padding:
-                            const EdgeInsets.symmetric(horizontal: 28),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Container(
+                        width:
+                            (skinDataController.data!.length * 200).toDouble(),
+                        height: 380,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 28),
+                          child: BarChart(
+                            BarChartData(
+                              groupsSpace: 1,
+                              titlesData: FlTitlesData(
+                                topTitles: AxisTitles(
+                                  sideTitles: SideTitles(
+                                    showTitles: true,
+                                    getTitlesWidget:
+                                        (double value, TitleMeta meta) {
+                                      if (skinDataController.data != null &&
+                                          value.toInt() <
+                                              skinDataController.data!.length) {
+                                        final dateString = DateFormat('MM/dd')
+                                            .format(skinDataController
+                                                .data![value.toInt()]
+                                                .diagnosisDate);
+                                        return Text(
+                                          dateString,
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              fontFamily: 'BMJUA',
+                                              color: Colors.black
+                                                  .withOpacity(0.6)),
+                                        );
+                                      } else {
+                                        return Container();
+                                      }
+                                    },
+                                  ),
+                                ),
+                              ),
+                              barGroups: _getBarGroups(),
+                            ),
                           ),
                         ),
                       ),
@@ -233,13 +263,14 @@ class _ResultSkinGraphState extends State<ResultSkinGraph> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             primary: Colors.white,
                             onPrimary: DEFAULT_BLUE,
                             elevation: 0,
+                            padding: EdgeInsets.all(0),
                             minimumSize: Size(54, 54),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
@@ -276,7 +307,7 @@ class _ResultSkinGraphState extends State<ResultSkinGraph> {
                           onPressed: () {},
                           child: SizedBox(
                             height: 54,
-                            width: 180,
+                            width: 190,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -284,11 +315,8 @@ class _ResultSkinGraphState extends State<ResultSkinGraph> {
                                   Icons.pets,
                                   size: 16.0,
                                 ),
-                                SizedBox(
-                                  width: 4.0,
-                                ),
                                 Text(
-                                  '피부 진단기록 확인하러 가기',
+                                  '비만도 진단기록 확인하러 가기',
                                   style: TextStyle(
                                     fontFamily: 'BMJUA',
                                     fontSize: 18,
@@ -314,3 +342,26 @@ class _ResultSkinGraphState extends State<ResultSkinGraph> {
   }
 }
 
+List<BarChartGroupData> _getBarGroups() {
+  final SkinDataController skinDataController = Get.find();
+
+  List<BarChartGroupData> barGroups = [];
+  for (int i = 0; i < skinDataController.data!.length; i++) {
+    barGroups.add(
+      BarChartGroupData(
+        x: i,
+        barRods: [
+          for (int j = 0; j < 3; j++)
+            BarChartRodData(
+              toY: skinDataController.data![i].resultValues[j],
+              color: skinDataController.data![i].results[j] == '무증상'
+                  ? CHART_GREEN
+                  : CHART_RED,
+              width: 20,
+            )
+        ],
+      ),
+    );
+  }
+  return barGroups;
+}

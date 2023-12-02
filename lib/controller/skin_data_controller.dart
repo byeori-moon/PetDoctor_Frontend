@@ -35,7 +35,7 @@ class PetSkinData {
       resultValues: resultValues,
       results: results,
       diagnosisDate: DateTime.parse(json['diagnosis_date']),
-      skinImageURL: json['obesity_images'],
+      skinImageURL: json['disease_image'],
       pet: json['pet'],
     );
   }
@@ -84,7 +84,7 @@ Future<List<PetSkinData>> fetchAndStorePetData() async {
       print("DioError Request: ${e.requestOptions}");
     }
   } catch (e) {
-    print("General Error: $e");
+    print("General22 Error: $e");
   }
   return petDataList;
 }
