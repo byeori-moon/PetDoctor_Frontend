@@ -40,7 +40,7 @@ class PetSkinData {
     );
   }
 
-  Future<File> downloadImages() async {
+  Future<File> downloadImage() async {
     var dio = Dio();
     File file;
 
@@ -71,7 +71,6 @@ Future<List<PetSkinData>> fetchAndStorePetData() async {
     List jsonResponse = response.data;
     for (var data in jsonResponse) {
       PetSkinData petData = PetSkinData.fromJson(data);
-      await petData.downloadImages();
       petDataList.add(petData);
     }
     print(petDataList);

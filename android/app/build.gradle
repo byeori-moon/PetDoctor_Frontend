@@ -12,16 +12,6 @@ if (localPropertiesFile.exists()) {
     }
 }
 
-def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
-if (flutterVersionCode == null) {
-    flutterVersionCode = '1'
-}
-
-def flutterVersionName = localProperties.getProperty('flutter.versionName')
-if (flutterVersionName == null) {
-    flutterVersionName = '1.0'
-}
-
 def keystoreProperties = new Properties()
 def keystorePropertiesFile = rootProject.file('app/key.properties')
 if (keystorePropertiesFile.exists()) {
@@ -62,27 +52,21 @@ android {
     }
 
     signingConfigs {
-        release {
-            keyAlias keystoreProperties['keyAlias']
-            keyPassword keystoreProperties['keyPassword']
-            storeFile file(keystoreProperties['storeFile'])
-            storePassword keystoreProperties['storePassword']
+        debug {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('/Users/PC/Desktop/frontend/android/app/key.jks')
+            storePassword 'android'
         }
+
     }
 
     buildTypes {
         debug{
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.debug
 
         }
-        staging{
-            signingConfig signingConfigs.release
 
-        }
-        release {
-            signingConfig signingConfigs.release
-            minifyEnabled true
-        }
     }
 }
 
@@ -97,8 +81,7 @@ dependencies {
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
     implementation 'androidx.compose.material3:material3:1.1.0-alpha05'
-    implementation "com.google.android.gms:play-services-appset:16.0.2"
-
+    // Google Play services
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

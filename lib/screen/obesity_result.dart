@@ -31,7 +31,7 @@ class _ObesityResultScreenState extends State<ObesityResultScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('기록 불러오는중...'),
+                  Text('AI가 뽀삐의 비만도를 분석하는 중이에요 ...'),
                   CircularProgressIndicator(),
                 ],
               );
@@ -164,7 +164,6 @@ class _ObesityResultScreenState extends State<ObesityResultScreen> {
                     ),
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
@@ -172,6 +171,7 @@ class _ObesityResultScreenState extends State<ObesityResultScreen> {
                           onPrimary: DEFAULT_BLUE,
                           elevation: 0,
                           minimumSize: Size(54, 54),
+                          padding: EdgeInsets.all(0),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                               side: BorderSide(color: DEFAULT_BLUE)),
@@ -196,37 +196,42 @@ class _ObesityResultScreenState extends State<ObesityResultScreen> {
                           ],
                         ),
                       ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          primary: DEFAULT_BLUE,
-                          onPrimary: BACKGROUND_COLOR,
-                          shadowColor: Colors.white.withOpacity(0),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
+                      SizedBox(width: 10,),
+                      Expanded(
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: DEFAULT_BLUE,
+                            onPrimary: BACKGROUND_COLOR,
+                            shadowColor: Colors.white.withOpacity(0),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
                           ),
-                        ),
-                        onPressed: () {},
-                        child: SizedBox(
-                          height: 54,
-                          width: 220,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.pets,
-                                size: 16.0,
+                          onPressed: () {},
+                          child: SizedBox(
+                            height: 54,
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.pets,
+                                    size: 16.0,
+                                  ),
+                                  SizedBox(
+                                    width: 4.0,
+                                  ),
+                                  Text(
+                                    '건강기록 확인하기',
+                                    style: TextStyle(
+                                      fontFamily: 'BMJUA',
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ],
                               ),
-                              SizedBox(
-                                width: 4.0,
-                              ),
-                              Text(
-                                '건강기록 확인하기',
-                                style: TextStyle(
-                                  fontFamily: 'BMJUA',
-                                  fontSize: 18,
-                                ),
-                              ),
-                            ],
+                            ),
                           ),
                         ),
                       ),

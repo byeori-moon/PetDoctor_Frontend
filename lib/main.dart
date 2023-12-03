@@ -1,3 +1,4 @@
+import 'package:capstonefe/component/google_signin_component.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'constant/color.dart';
@@ -6,7 +7,7 @@ import 'screen/home_screen.dart';
 void main() {
   runApp(
     GetMaterialApp(
-      home: HomeScreen(),
+      home: SignInDemo(),
       theme: ThemeData(
           appBarTheme: AppBarTheme(
             titleTextStyle: TextStyle(

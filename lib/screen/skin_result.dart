@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 import '../constant/color.dart';
 import '../controller/skin_controller.dart';
+import 'home_screen.dart';
 import 'skin_take_picture.dart';
 
 class SkinResult extends StatefulWidget {
@@ -173,9 +174,85 @@ class _SkinResultState extends State<SkinResult> {
           _InformationCard(
               diseaseName: skinController.data!['result'][2][0],
               percentage: skinController.data!['result'][2][1]),
-          SizedBox(
-            height: 16,
-          )
+
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.white,
+                    onPrimary: DEFAULT_BLUE,
+                    elevation: 0,
+                    minimumSize: Size(54, 54),
+                    padding: EdgeInsets.all(0),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        side: BorderSide(color: DEFAULT_BLUE)),
+                  ),
+                  onPressed: () {
+                    Get.delete<SkinControllor>();
+                    Get.offAll(HomeScreen());
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.home_outlined,
+                        size: 22,
+                      ),
+                      Text(
+                        'HOME',
+                        style: TextStyle(
+                          fontFamily: 'BMJUA',
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(width: 10,),
+                Expanded(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: DEFAULT_BLUE,
+                      onPrimary: BACKGROUND_COLOR,
+                      shadowColor: Colors.white.withOpacity(0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                    ),
+                    onPressed: () {},
+                    child: SizedBox(
+                      height: 54,
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.pets,
+                              size: 16.0,
+                            ),
+                            SizedBox(
+                              width: 4.0,
+                            ),
+                            Text(
+                              '건강기록 확인하기',
+                              style: TextStyle(
+                                fontFamily: 'BMJUA',
+                                fontSize: 18,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

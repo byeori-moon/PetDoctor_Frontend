@@ -81,7 +81,7 @@ class ObesityTakePictureScreen extends StatelessWidget {
                           width: 4.0,
                         ),
                         Text(
-                          '상처분석하기',
+                          '비만도 분석하기',
                           style: TextStyle(
                             fontFamily: 'BMJUA',
                             fontSize: 18,

@@ -228,6 +228,7 @@ class _BigButton extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20.0),
                 ),
               ),
+
             ),
             onPressed: () {
               Get.to(ResultSelect());
@@ -271,6 +272,7 @@ class _BigButton extends StatelessWidget {
             style: ElevatedButton.styleFrom(
               primary: Colors.white.withOpacity(0),
               shadowColor: Colors.white.withOpacity(0),
+              elevation: 0,
             ),
             child: Image.asset('asset/img/fat_dog.png'),
           ),
