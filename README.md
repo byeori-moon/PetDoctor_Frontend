@@ -20,7 +20,7 @@
    - Figma로 디자인 작업 혼자서 100% 진행
      &nbsp;&nbsp;[👉 피그마 디자인 바로가기](https://www.figma.com/design/3AAVLJigfm1lqYiol0oYUg/Prototype?node-id=0-1&t=3AJcZEEdbC8ajIM0-1)
 
-   ![메인화면](./perdoctor1.png)
+   ![메인화면](./petdoctor1.png)
 
 2. **🔍 AI 피부질환/비만도 진단 기능 및 UX를 고려한 문제해결**
    - 사진 촬영, 전송 후 AI 서버에서 피부질환 진단 또는 비만도 분석 결과를 받아와 화면에 표시
@@ -31,16 +31,16 @@
        ➡️ AI 진단 결과 수신을 기존 **10초에서 7~8초**정도로 줄임
      - AI로 세부 진단을 하기 때문에 시간 소요가 있다는 사실을 유저가 직관적으로 이해할 수 있도록 진단 시 AI 진단 애니메이션 삽입
 
-   ![AI 피부질환 진단 화면](./perdoctor2.png)
+   ![AI 피부질환 진단 화면](./petdoctor2.png)
    
-   ![AI 비만도 진단 화면](./perdoctor4.png)
+   ![AI 비만도 진단 화면](./petdoctor4.png)
 
 3. **📊 그래프로 진단 데이터 시각화**
    - **Flutter Charts 플러그인**을 사용하여 반려동물의 질병 기록 변화와 비만도 변화를 그래프로 시각화
    - 각 진단 기록 클릭 시 질병 및 비만도 진단 기록과 촬영했던 사진 제공
    - 캐싱 및 타임스탬프를 활용한 데이터 로딩 최적화로 UI/UX 개선
 
-   ![진단 데이터 시각화 화면](./perdoctor3.png)
+   ![진단 데이터 시각화 화면](./petdoctor3.png)
 
 4. **🔐 보안 및 로그인**
    - **Firebase Authentication**을 사용해 소셜 로그인 기능 구현
