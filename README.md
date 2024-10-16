@@ -15,14 +15,7 @@
 ---
 
 ## 🛠️ 역할 및 기여
-1. **🎨 UI 디자인**
-   - 20대 여성 사용자를 타겟으로 감성적이고 직관적인 UI 디자인
-   - Figma로 디자인 작업 혼자서 100% 진행
-     &nbsp;&nbsp;[👉 피그마 디자인 바로가기](https://www.figma.com/design/3AAVLJigfm1lqYiol0oYUg/Prototype?node-id=0-1&t=3AJcZEEdbC8ajIM0-1)
-
-   ![메인화면](./petdoctor1.png)
-
-2. **🔍 AI 피부질환/비만도 진단 기능 및 UX를 고려한 문제해결**
+1. **🔍 AI 피부질환/비만도 진단 기능 및 UX를 고려한 문제해결**
    - 사진 촬영, 전송 후 AI 서버에서 피부질환 진단 또는 비만도 분석 결과를 받아와 화면에 표시
    - **GetX 플러그인**을 활용해 UI의 매끄러운 전환을 고려한 버튼 상태관리
    - 최종 확인 버튼을 눌러야 화면 전환이 되도록 설계하여, 클릭 오류 방지 및 사용성 개선
@@ -35,16 +28,23 @@
    
    ![AI 비만도 진단 화면](./petdoctor4.png)
 
-3. **📊 그래프로 진단 데이터 시각화**
+2. **📊 그래프로 진단 데이터 시각화**
    - **Flutter Charts 플러그인**을 사용하여 반려동물의 질병 기록 변화와 비만도 변화를 그래프로 시각화
    - 각 진단 기록 클릭 시 질병 및 비만도 진단 기록과 촬영했던 사진 제공
    - 캐싱 및 타임스탬프를 활용한 데이터 로딩 최적화로 UI/UX 개선
 
    ![진단 데이터 시각화 화면](./petdoctor3.png)
 
-4. **🔐 보안 및 로그인**
+3. **🔐 보안 및 로그인**
    - **Firebase Authentication**을 사용해 소셜 로그인 기능 구현
    - **flutter_secure_storage**를 사용해 보안을 고려하며 액세스 토큰 관리
+
+4. **🎨 UI 디자인**
+   - 20대 여성 사용자를 타겟으로 감성적이고 직관적인 UI 디자인
+   - Figma로 디자인 작업 혼자서 100% 진행
+     &nbsp;&nbsp;[👉 피그마 디자인 바로가기](https://www.figma.com/design/3AAVLJigfm1lqYiol0oYUg/Prototype?node-id=0-1&t=3AJcZEEdbC8ajIM0-1)
+
+   ![메인화면](./petdoctor1.png)
 
 ---
 
